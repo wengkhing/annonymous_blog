@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="header">
+    <a href="/"><h1>Zik</h1></a>
+    <nav>
+      <ul>
+        <li><a href="/posts/new">Create New Post</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="content">
+    <table>
+      <tr>
+        <td>Title</td>
+        <td>Clicked</td>
+      </tr>
+      <%Post.joins(:tags).where("tags.id = #{@tag.id}").each do |p|%>
+        <tr>
+          <td><a href="/posts/<%=p.id%>"><%=p.title%></a>
+          </td>
+          <td><%=p.click_count%></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <ul>
+              <%p.tags.each do |t|%>
+                <li><a href="/tags/<%=t.id%>"><%=t.name%></a></li>
+              <%end%>
+            </ul>
+          </td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+</div>

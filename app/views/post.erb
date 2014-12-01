@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="header">
+    <a href="/"><h1>Zik</h1></a>
+    <nav>
+      <ul>
+        <li><a href="/posts/edit/<%=@post.id%>">Edit Post</a></li>
+        <li><a href="/posts/delete/<%=@post.id%>">Delete Post</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="content">
+    <table>
+      <tr>
+        <td><%=@post.title%></td>
+        <td>Clicked: <%=@post.click_count%> times</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <ul>
+          <%@post.tags.each do |t|%>
+            <li><a href="/tags/<%=t.id%>"><%=t.name%></a></li>
+          <%end%>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><%=@post.body%></td>
+      </tr>
+    </table>
+  </div>
+</div>
